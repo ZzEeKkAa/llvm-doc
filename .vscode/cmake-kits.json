@@ -1,0 +1,8 @@
+[
+  {
+    "name": "llvm-project in conda(llvm-dev)",
+    "environmentSetupScript": "${workspaceFolder}/.vscode/activate.sh",
+    "toolchainFile": "${workspaceFolder}/.vscode/toolchain.cmake",
+    "isTrusted": true
+  }
+]
