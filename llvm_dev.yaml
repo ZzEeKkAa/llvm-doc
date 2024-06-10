@@ -1,23 +1,21 @@
 dependencies:
   # complier toolchain
-  - gcc_linux-64
-  - gxx_linux-64
-  # - clang_linux-64
-  # - clangxx_linux-64
+  # - gcc_linux-64  # [linux]
+  # - gxx_linux-64  # [linux]
+  - clang_osx-arm64  # [osx]
+  - clangxx_osx-arm64  # [osx]
   # set version as close as possible to you host system
-  - sysroot_linux-64=2.28
+  # - sysroot_linux-64=2.28 #[linux]
   # build tools
   - cmake
   - ninja
   # llvm dependencies
-  - git
   - zlib
   - zstd
   - libxml2
   - python
-  - backtrace
   # enhancements
   #  enable caching between builds and for the fresh builds
   - ccache
   #  enable faster linking
-  - ldd
+  - lld
