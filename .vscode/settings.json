@@ -1,7 +1,5 @@
 {
-    // Change to full path to conda environment's cmake
-    //  NOTE: Update python path in this file as well!
-    "cmake.cmakePath": "${userHome}/.miniforge3/envs/llvm-dev/bin/cmake",
+    "cmake.cmakePath": "${env:CONDA_PREFIX}/bin/cmake",
     "cmake.configureOnOpen": false,
     "cmake.sourceDirectory": "${workspaceFolder}/llvm",
     "cmake.buildDirectory": "${workspaceFolder}/build/${buildType}/${variant:platform}",
@@ -18,6 +16,7 @@
         "-DLLVM_USE_SPLIT_DWARF=ON",
         // Speed up linking
         "-DLLVM_USE_LINKER=lld",
+        // TODO: use Native instead?
         "-DLLVM_TARGETS_TO_BUILD=X86",
         // Enable MLIR
         "-DLLVM_ENABLE_PROJECTS=mlir",
@@ -25,7 +24,7 @@
         // Reduce size of build folder. For mlir build it is 7Gb (24G original)
         "-DBUILD_SHARED_LIBS=ON",
         // Explicitly set python path to the one in conda
-        "-DPython3_EXECUTABLE=${userHome}/.miniforge3/envs/llvm-dev/bin/python3",
+        "-DPython3_EXECUTABLE=${env:CONDA_PREFIX}/bin/python3",
         // Turn on examples
         "-DLLVM_INCLUDE_EXAMPLES=ON",
     ],
