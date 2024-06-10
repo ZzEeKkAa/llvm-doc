@@ -86,3 +86,15 @@ bottom (make sure to update it to your paths):
     "mlir.onSettingsChanged": "restart",
 }
 ```
+
+### Runing toy examples in-tree
+
+Once you've set up everything:
+
+- `> CMake: Set Build Target`
+- `toyc-ch2`
+- `> CMake: Build`
+
+Now you can navigate to toy's examle at `./mlir/examples/toy/Ch2` in your VSCode
+and all the definitinons in `cpp/tablegen/mlir` should work and you can easily
+navigate (eg. navigate to MLIR definition definitions).
