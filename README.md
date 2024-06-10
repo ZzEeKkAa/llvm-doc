@@ -5,11 +5,19 @@ IDE.
 
 ## Preretirement
 
+- [Miniforge3](https://conda-forge.org/miniforge/)
+- [VSCode](https://code.visualstudio.com)
+- [CMake Tools VSCode Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cmake-tools)
+- [MLIR VSCode Extension](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-mlir)
+
 You need to have conda install available, preferably miniforge. Default may work
 but not tested. It is also looks like build packages on host system are
 required. For ubuntu it is `apt install build-essential`.
 
 ## Create conda environment
+
+Open `llvm_dev.yaml` and edit it depending on your compiler and system
+preferences. Then run:
 
 ```bash
 conda env create -n llvm-dev -f llvm_dev.yaml 
@@ -49,4 +57,32 @@ above.
 To run individual test through lit:
 ```shell
 ./build/Debug/bin/llvm-lit ./mlir/test/Dialect/Linalg/
+```
+
+### Enable tablegen and MLIR language support
+
+Reference: [MLIR : Language Server Protocol](https://mlir.llvm.org/docs/Tools/MLIRLSP/#visual-studio-code)
+
+You need [MLIR VSCode Extension](https://marketplace.visualstudio.com/items?itemName=llvm-vs-code-extensions.vscode-mlir)
+and llvm build along with the mlir extension.
+
+Then go to extensions settings and set paths to lsp servers and databases. You
+can short cut it by opening `User's settings.json` and adding this to the
+bottom (make sure to update it to your paths):
+
+```json
+{
+    // ...
+    "mlir.server_path": "/Users/zeka/Projects/Intel/llvm-project/build/Debug/bin/mlir-lsp-server",
+    "mlir.pdll_server_path": "/Users/zeka/Projects/Intel/llvm-project/build/Debug/bin/mlir-pdll-lsp-server",
+    "mlir.tablegen_server_path": "/Users/zeka/Projects/Intel/llvm-project/build/Debug/bin/tblgen-lsp-server",
+    "mlir.tablegen_compilation_databases": [
+        "/Users/zeka/Projects/Intel/llvm-project/build/Debug/tablegen_compile_commands.yml",
+        "/Users/zeka/Projects/Intel/llvm-project/build/Debug/NATIVE/tablegen_compile_commands.yml"
+    ],
+    "mlir.pdll_compilation_databases": [
+        "/Users/zeka/Projects/Intel/llvm-project/build/Debug/pdll_compile_commands.yml",
+    ],
+    "mlir.onSettingsChanged": "restart",
+}
 ```
