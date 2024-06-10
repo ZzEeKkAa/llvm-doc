@@ -2,10 +2,12 @@ dependencies:
   # complier toolchain
   # - gcc_linux-64  # [linux]
   # - gxx_linux-64  # [linux]
-  - clang_osx-arm64  # [osx]
-  - clangxx_osx-arm64  # [osx]
+  - clang_linux-64  # [linux]
+  - clangxx_linux-64  # [linux]
+  # - clang_osx-arm64  # [osx]
+  # - clangxx_osx-arm64  # [osx]
   # set version as close as possible to you host system
-  # - sysroot_linux-64=2.28 #[linux]
+  - sysroot_linux-64=2.28 #[linux]
   # build tools
   - cmake
   - ninja
